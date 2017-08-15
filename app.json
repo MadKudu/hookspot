@@ -1,0 +1,7 @@
+{
+  "name": "Hookspot",
+  "description": "A webhook service that update a Hubspot lead with a random number from 1 to 100",
+  "repository": "https://github.com/MadKudu/hookspot",
+  "logo": "http://www.madkudu.com/static/images/general/main-logo-madkudu.svg",
+  "keywords": ["madkudu", "hubspot", "webhook"]
+}
