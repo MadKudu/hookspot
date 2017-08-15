@@ -1,6 +1,6 @@
 # What it's for
 
-Wouldn't be great to be able to A/B test various customer engagement strategies in Hubspot  (eg. lead scoring A vs B, email frequency A versus B, etc...).
+Wouldn't it be great to A/B test various customer engagement strategies in Hubspot? (eg. impact of lead scoring A vs B, best email frequency, etc...).
 
 Unfortunately Hubspot does not allow you to randomly assign leads to a list.
 
@@ -10,7 +10,7 @@ Alternatives: checkout [Zapier](https://zapier.com/). It is powerful and easy to
 
 # What it does
 
-Hookspot is an open-source service that provides an end-point (ie. webhook) that updates your Hubspot lead profiles with a random number.
+Hookspot is an open-source service that provides an end-point (ie. webhook) that updates your Hubspot lead profiles with a random number. This number can then be used to test different campaigns and workflows in Hubspot.
 
 Here is how it works:
 1. You create a [contact workflow](https://knowledge.hubspot.com/articles/kcs_article/workflows/how-do-i-use-webhooks-with-hubspot-workflows) in Hubspot that calls this webhook when a lead is created.
@@ -44,3 +44,7 @@ The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you w
 5. Save and activate workflow
 
 You're all set.
+
+# A word of caution
+
+Hubspot has pretty strict [API usage guidelines](https://developers.hubspot.com/apps/api_guidelines) (for example, no more than 10 requests per seconds, and no more than 40,000 API requests per day). This webhook makes a Hubspot API request every time it is called. Make sure to set up a Hubspot workflow that calls this service responsibly.
