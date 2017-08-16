@@ -77,6 +77,6 @@ CAST(RIGHT(STRTOL(LEFT(MD5(string_to_hash), 12), 16),2) AS INT) + 1
 The benefit of using a deterministic number generation is that it offers full transparency on where the number comes from and remove any question of "hidden bias". In other words, if there is a bias with the way the number is generated, it is transparent to all parties and can be easily reproduced on any data set.
 
 # Credits
-Paul Cothenet at MadKudu
-Hanan Ayad at Shopify
-Adam McCabe at Shopify
+- Paul Cothenet at MadKudu
+- Hanan Ayad at Shopify
+- Adam McCabe at Shopify
