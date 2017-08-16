@@ -39,7 +39,7 @@ PROPERTY_NAME=zzz
 
 You can find your Hubspot API key under "Integrations" in your Hubspot settings.
 
-The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you want this service to update (eg. '')
+The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you want this service to update (eg. `Test bucket number`) (it should match the name of the property you created at step 1)
 
 4. Under Heroku Settings, find your domain. Usually it's https://{APP_NAME}.herokuapp.com/
 
