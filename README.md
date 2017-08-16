@@ -47,7 +47,7 @@ You're all set.
 
 # A word of caution
 
-Hubspot has pretty strict [API usage guidelines](https://developers.hubspot.com/apps/api_guidelines) (for example, no more than 10 requests per seconds, and no more than 40,000 API requests per day). This webhook makes a Hubspot API request every time it is called. Make sure to set up a Hubspot workflow that calls this service responsibly (ie. use proper [workflow starting conditions](https://developers.hubspot.com/docs/faq/working-within-the-hubspot-api-rate-limits)).
+Hubspot has strict [API usage guidelines](https://developers.hubspot.com/apps/api_guidelines) (for example, no more than 10 requests per seconds, and no more than 40,000 API requests per day). This webhook makes a Hubspot API request every time it is called. Make sure to set up a Hubspot workflow that calls this service responsibly (ie. use proper [workflow starting conditions](https://developers.hubspot.com/docs/faq/working-within-the-hubspot-api-rate-limits)).
 
 # FAQ
 
@@ -75,3 +75,8 @@ CAST(RIGHT(STRTOL(LEFT(MD5(string_to_hash), 12), 16),2) AS INT) + 1
 
 ### Why do you use this logic to generate a random number?
 The benefit of using a deterministic number generation is that it offers full transparency on where the number comes from and remove any question of "hidden bias". In other words, if there is a bias with the way the number is generated, it is transparent to all parties and can be easily reproduced on any data set.
+
+# Credits
+Paul Cothenet at MadKudu
+Hanan Ayad at Shopify
+Adam McCabe at Shopify
