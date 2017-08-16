@@ -21,7 +21,9 @@ Then you can create campaigns in Hubspot that uses this random number to A/B tes
 
 # How to set this up
 
-1. Deploy this service to a platform like [Heroku](https://www.heroku.com/)
+1. Create a new contact property in Hubspot with `Number` as `field type` to store the assigned random number (eg. `Test bucket number` as property name). 
+
+1. Deploy this service to a platform like [Heroku](https://www.heroku.com/).
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -35,7 +37,7 @@ PROPERTY_NAME=zzz
 
 You can find your Hubspot API key under "Integrations" in your Hubspot settings.
 
-The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you want this service to update.
+The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you want this service to update (eg. '')
 
 3. Under Heroku Settings, find your domain. Usually it's https://{APP_NAME}.herokuapp.com/
 
