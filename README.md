@@ -47,4 +47,31 @@ You're all set.
 
 # A word of caution
 
-Hubspot has pretty strict [API usage guidelines](https://developers.hubspot.com/apps/api_guidelines) (for example, no more than 10 requests per seconds, and no more than 40,000 API requests per day). This webhook makes a Hubspot API request every time it is called. Make sure to set up a Hubspot workflow that calls this service responsibly.
+Hubspot has pretty strict [API usage guidelines](https://developers.hubspot.com/apps/api_guidelines) (for example, no more than 10 requests per seconds, and no more than 40,000 API requests per day). This webhook makes a Hubspot API request every time it is called. Make sure to set up a Hubspot workflow that calls this service responsibly (ie. use proper [workflow starting conditions](https://developers.hubspot.com/docs/faq/working-within-the-hubspot-api-rate-limits)).
+
+# FAQ
+
+### How is the "random" number generated?
+The "random" number is actually generated deterministically based on on Hubspot VID ([visitor id](https://developers.hubspot.com/docs/methods/contacts/get_contact)).
+
+The logic used is the following:
+1. encrypt the vid to a 128-bit hash value which is represented by 32 characters using a hexdecimal representation (eg. `1` becomes `c4ca4238a0b923820dcc509a6f75849b`)
+2. extract the first 12 characters from this hexdecimal representation (eg. `c4ca4238a0b923820dcc509a6f75849b` becomes `c4ca4238a0b9`)
+3. convert it back to a base 10 representation (eg. `c4ca4238a0b9` becomes `216372973445305`)
+4. get the last 2 digits from the decimal representation to get a number between 0 and 99 (eg. `216372973445305` becomes `5`)
+5. add 1 to this number to get a number between 1 and 100 (eg. `5` becomes `6`)
+
+Example of implementation in Node:
+```
+const md5 = require('blueimp-md5')
+const hashed_string = parseInt(md5(string_to_hash).substring(0, 12), 16).toString()
+const random_number = parseInt(hashed_string.substring(hashed_string.length - 2, hashed_string.length)) + 1
+```
+
+Example of implementation in SQL (redshift dialect):
+```
+CAST(RIGHT(STRTOL(LEFT(MD5(string_to_hash), 12), 16),2) AS INT) + 1
+```
+
+### Why do you use this logic to generate a random number?
+The benefit of using a deterministic number generation is that it offers full transparency on where the number comes from and remove any question of "hidden bias". In other words, if there is a bias with the way the number is generated, it is transparent to all parties and can be easily reproduced on any data set.
