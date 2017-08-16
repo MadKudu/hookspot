@@ -21,13 +21,15 @@ Then you can create campaigns in Hubspot that uses this random number to A/B tes
 
 # How to set this up
 
-1. Create a new contact property in Hubspot with `Number` as `field type` to store the assigned random number (eg. `Test bucket number` as property name). 
+[![setup demo](https://img.youtube.com/vi/fUyxs3efiMs/0.jpg)](https://www.youtube.com/watch?v=fUyxs3efiMs)
 
-1. Deploy this service to a platform like [Heroku](https://www.heroku.com/).
+1. Create a new contact property in Hubspot with `Number` as `field type` to store the assigned random number (eg. `Test bucket number` as property name).
+
+2. Deploy this service to a platform like [Heroku](https://www.heroku.com/).
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-2. After deploying, go into Settings and click on "Reveal Config Vars". Configure the following environment variables with the following:
+3. After deploying, go into Settings and click on "Reveal Config Vars". Configure the following environment variables with the following:
 
 ```
 HUBSPOT_API_KEY=zzz
@@ -39,11 +41,11 @@ You can find your Hubspot API key under "Integrations" in your Hubspot settings.
 
 The `PROPERTY_NAME` is the Hubspot "internal name" of the contact property you want this service to update (eg. '')
 
-3. Under Heroku Settings, find your domain. Usually it's https://{APP_NAME}.herokuapp.com/
+4. Under Heroku Settings, find your domain. Usually it's https://{APP_NAME}.herokuapp.com/
 
-4. Now go into Hubspot contact workflow and create a new one which has only one step: "trigger a webhook" with `POST` as the `method` and the url above as the `webhook URL` (do not check the use authentication checkbox).
+5. Now go into Hubspot contact workflow and create a new one which has only one step: "trigger a webhook" with `POST` as the `method` and the url above as the `webhook URL` (do not check the use authentication checkbox).
 
-5. Save and activate workflow
+6. Save and activate workflow
 
 You're all set.
 
