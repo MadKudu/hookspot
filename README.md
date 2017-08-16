@@ -1,4 +1,6 @@
-# What it's for
+# Hookspot
+
+## What it's for
 
 Wouldn't it be great to A/B test various customer engagement strategies in Hubspot? (eg. impact of lead scoring A vs B, best email frequency, etc...).
 
@@ -8,7 +10,7 @@ This tool makes this possible, in real-time, for past and new leads.
 
 Alternatives: checkout [Zapier](https://zapier.com/). It is powerful and easy to use.
 
-# What it does
+## What it does
 
 Hookspot is an open-source service that provides an end-point (ie. webhook) that updates your Hubspot lead profiles with a random number. This number can then be used to test different campaigns and workflows in Hubspot.
 
@@ -19,7 +21,7 @@ Here is how it works:
 
 Then you can create campaigns in Hubspot that uses this random number to A/B test your campaigns.
 
-# How to set this up
+## How to set it up
 
 [![setup demo](https://img.youtube.com/vi/fUyxs3efiMs/0.jpg)](https://www.youtube.com/watch?v=fUyxs3efiMs)
 
@@ -80,7 +82,10 @@ CAST(RIGHT(STRTOL(LEFT(MD5(string_to_hash), 12), 16),2) AS INT) + 1
 ### Why do you use this logic to generate a random number?
 The benefit of using a deterministic number generation is that it offers full transparency on where the number comes from and remove any question of "hidden bias". In other words, if there is a bias with the way the number is generated, it is transparent to all parties and can be easily reproduced on any data set.
 
+It also ensures that the same user always stays in the same test bucket. 
+
 # Credits
 - Paul Cothenet at MadKudu
+- Sam Levan at MadKudu
 - Hanan Ayad at Shopify
 - Adam McCabe at Shopify
