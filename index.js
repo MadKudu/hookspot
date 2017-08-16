@@ -1,18 +1,23 @@
 // require('dotenv').config()
-const hubspot = require('./lib/hubspot_client')
-const check_validity_of_environment_variables = require('./lib/check_validity_of_environment_variables')
+const hubspot = require('./lib/hubspot')
+const check_environment = require('./lib/check_environment')
 const app = require('./lib/app')
 
 const PORT = process.env.PORT || 3000
 
-hubspot.init().then(() => {
-  return check_validity_of_environment_variables()
-    .then(() => {
-      app.listen(PORT, function () {
-        console.log('hookforce started on port ' + PORT)
-      })
-    }).catch(err => {
-      console.log(err)
-      console.log('\nPlease review and fix the issue described above and restart this service')
+check_environment()
+
+hubspot.test()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log('hookforce started on port ' + PORT)
     })
-}).catch(console.error)
+  }).catch(err => {
+    console.error(err)
+    console.log('\nPlease review and fix the issue described above and restart this service')
+  })
+
+process.on('unhandledRejection', err => {
+  console.error(err)
+  process.exit(1)
+})
